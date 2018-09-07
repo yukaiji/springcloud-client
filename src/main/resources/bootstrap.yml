@@ -1,0 +1,18 @@
+#指定配置中心的uri之后，配置中心根据 /{label}/{application}-{profile}.yml 定位到唯一配置文件
+spring.application.name: spring-cloud-client
+# 测试环境
+# 通过POM文件当中的profiles标签属性控制
+#{profile}为环境变量，一般有 dev，test，pro三类
+spring.cloud.config.profile: test
+#{label}为gitlab分支名，例如： master（主分支），个人分支等
+spring.cloud.config.label: master
+#{application}为以下配置的spring.application.name，应用名请使用统一的前缀
+spring.cloud.config.uri: http://localhost:9001
+server.port: 5001
+# 生产环境
+#spring.cloud.config.discovery.serviceId: config-server
+#spring.cloud.config.profile: ${spring.cloud.config.profile}
+#spring.cloud.config.label: ${spring.cloud.config.label}
+#spring.cloud.config.uri: ${spring.cloud.config.uri}
+# 开启本地配置
+#spring.profiles.active: native
